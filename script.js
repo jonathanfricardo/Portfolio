@@ -1,8 +1,13 @@
-const firstNamePosition = document.querySelector('.first-name');
-firstNamePosition.style.left = window.innerWidth / 2 - firstNamePosition.offsetWidth + 'px';
+window.onload = function() {
+    const firstNamePosition = document.querySelector('.first-name');
+    const lastNamePosition = document.querySelector('.last-name');
+    
+    // Position the first name
+    firstNamePosition.style.left = (window.innerWidth / 2) - (firstNamePosition.offsetWidth) + 'px';
 
-const lastNamePosition = document.querySelector('.last-name');
-lastNamePosition.style.left = window.innerWidth / 2 + 'px';
+    // Position the last name
+    lastNamePosition.style.left = (window.innerWidth / 2) + 'px';
+};
 
 const firstName = document.querySelector('.first-name');
 const lastName = document.querySelector('.last-name');
