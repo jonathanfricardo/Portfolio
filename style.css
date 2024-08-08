@@ -55,7 +55,7 @@ body {
     top: 0;
     right: 0;
     position: fixed;
-    z-index: 10;
+    z-index: 12;
     
     mix-blend-mode: difference;
     color: white;
@@ -277,6 +277,79 @@ a {
     transition: border 0.2s ease;
 }
 
+/* Contact */
+
+.contact {
+    position: fixed;
+    bottom: -40%;
+    width: 100%;
+    z-index: 11;
+}
+
+.contact-title {
+    font-size: 8em;
+    font-weight: 800;
+    letter-spacing: -0.06em;
+    line-height: 80%;
+    margin-bottom: 5%;
+    position: sticky;
+    top: 0;
+    margin-left: 20%;
+
+}
+
+.contact-text {
+    display: flex;
+    width: 80%;
+    height: 10vh;
+    font-weight: 600;
+    margin-left: 10%;
+    text-align: center;
+}
+
+.contact-info {
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    color: black;
+    position: relative;
+}
+
+.contact-info a {
+    color: black;
+}
+
+.contact-info a:hover {
+    border-bottom: 2px black solid;
+    transition: border 0.2s ease;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    backdrop-filter: blur(30px); /* Apply blur effect */
+    display: none; /* Hidden by default */
+    z-index: 11; /* Make sure it's below the contact header */
+    transition: all ease 0.3s;
+}
+
+.overlay-first-name {
+    position: fixed;
+    font-size: 2.2em;
+    top: 45.5%;
+    transition: ease 0.3s;
+}
+
+.overlay-last-name {
+    position: fixed;
+    font-size: 2.2em;
+    top: 45.5%;
+    right: 0;
+    transition: ease 0.3s;
+}
 
 /* Background Video */
 .video {
