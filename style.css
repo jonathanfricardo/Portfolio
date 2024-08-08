@@ -1,0 +1,292 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.06em;
+    margin: 0;
+    overflow-x: hidden;
+    overflow: hidden;
+    background-color: white;
+    cursor: ulr('output-onlinepngtools.png'), auto;
+}
+
+.spacer {
+    height: 100vh;
+}
+
+.spacer2 {
+    height: 50vh;
+}
+
+.spacer3 {
+    height: 25vh;
+}
+
+/* Name */
+
+.full-name {
+    font-size: 9rem;
+    text-align: center;
+    letter-spacing: -0.06em;
+    position: absolute;
+    top: 39%;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.first-name, .last-name {
+    font-size: 9rem;
+    position: fixed;
+    mix-blend-mode: difference;
+    color: white;
+    transition: filter 0.3s ease;
+}
+
+/* Nav bar */
+
+.nav-bar {
+    display: flex;
+    justify-content: right;
+    margin: 10px;
+    top: 0;
+    right: 0;
+    position: fixed;
+    z-index: 10;
+    
+    mix-blend-mode: difference;
+    color: white;
+    transition: filter 0.3s ease;
+}
+
+.nav-item {
+    margin: 2px;
+}
+
+.nav-item.nav-active {
+    border-bottom: 3px white solid;
+}
+
+/* Marquee */
+
+.marquee {
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: -0.06em;
+    text-align: left;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    bottom: -45px;
+    width: 20000px;
+    text-overflow: clip;
+}
+
+/* Content */
+
+.content {
+    font-size: 5rem;   
+    pointer-events: none;
+}
+
+.words {
+    font-size: 9rem;
+    font-weight: 800;
+    letter-spacing: -0.06em;
+}
+
+.double-words {
+    display: flex;
+}
+
+.and {
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-weight: 1;
+    padding-left: 0.5em;
+    font-style: italic;
+}
+
+#creative {
+    margin-left: 5vh;
+}
+#innovative {
+    margin-left: 55vh;
+}
+#collab {
+    margin-left: 15vh;
+}
+#passionate {
+    margin-left: 85vh;
+}
+
+#fixed-text {
+    mix-blend-mode: difference;
+}
+
+/* About */
+
+.about {
+    width: 60%;
+    margin-left: 20%;
+    font-size: 3em;
+    font-weight: 800;
+    letter-spacing: -0.06em;
+    line-height: 80%;
+    text-align: justify;
+}
+
+.about-title {
+    font-size: 8em;
+    font-weight: 800;
+    letter-spacing: -0.06em;
+    line-height: 80%;
+    margin-bottom: 20%;
+    position: sticky;
+    top: 0;
+
+    mix-blend-mode: difference;
+    color: white;
+}
+
+.me-img {
+    width: 30%;
+    float: right;
+    margin-left: 20px;
+}
+
+/* Work */
+
+.work-title {
+    font-size: 8em;
+    font-weight: 800;
+    letter-spacing: -0.06em;
+    line-height: 80%;
+    margin-bottom: 10%;
+    position: sticky;
+    top: 0;
+
+    mix-blend-mode: difference;
+    color: white;
+    z-index: 9;
+    transition: text 0.3s ease;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+.work {
+    width: 80%;
+    font-size: small;
+    margin-left: 10%;
+    letter-spacing: 0.3em;
+    line-height: 80%;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    display: relative;
+}
+
+.work-mm {
+    position: absolute;
+    width: 30%;
+    margin: 5%;
+}
+
+.work-portfolio {
+    position: absolute;
+    width: 30%;
+    margin: 5%;
+    margin-top: 35%;
+}
+
+.work-vragen {
+    position: absolute;;
+    width: 30%;
+    margin-left: 50%;
+    margin-top: 20%;
+}
+
+.work-item {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.work-item-img {
+    position: relative;
+    width: 100%;
+    z-index: 10;
+}
+
+.work-card {
+    transition: filter 0.3s ease;
+}
+
+/* Blur */
+
+.work-card.blur {
+    filter: blur(5px);
+}
+
+.first-name.blur {
+    filter: blur(20px);
+}
+
+.last-name.blur {
+    filter: blur(20px);
+}   
+
+.nav-bar.blur {
+    filter: blur(5px);
+}
+
+/* Footer */
+
+.footer {
+    text-align: center;
+}
+
+.footer-text {
+    display: flex;
+    width: 80%;
+    height: 10vh;
+    font-weight: 500;
+    margin-left: 10%;
+    text-align: center;
+}
+
+.footer-info {
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    color: black;
+    bottom: 25vh;
+    position: relative;
+}
+
+.footer-info a {
+    color: black;
+}
+
+.footer-info a:hover {
+    border-bottom: 2px black solid;
+    transition: border 0.2s ease;
+}
+
+
+/* Background Video */
+.video {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: ease 0.5s;
+    object-fit: cover;
+}
+
