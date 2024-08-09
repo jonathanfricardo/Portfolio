@@ -1,12 +1,16 @@
 window.onload = function() {
-    const firstNamePosition = document.querySelector('.first-name');
-    const lastNamePosition = document.querySelector('.last-name');
-    
-    // Position the first name
-    firstNamePosition.style.left = (window.innerWidth / 2) - (firstNamePosition.offsetWidth) + 'px';
 
-    // Position the last name
-    lastNamePosition.style.left = (window.innerWidth / 2) + 'px';
+    if (window.innerWidth > 600) {
+        const firstNamePosition = document.querySelector('.first-name');
+        const lastNamePosition = document.querySelector('.last-name');
+        
+        // Position the first name
+        firstNamePosition.style.left = (window.innerWidth / 2) - (firstNamePosition.offsetWidth) + 'px';
+
+        // Position the last name
+        lastNamePosition.style.left = (window.innerWidth / 2) + 'px';
+    }
+
 };
 
 const firstName = document.querySelector('.first-name');
@@ -16,27 +20,53 @@ const scaleValue = 0.25; // Scale down to quarter size
 let tl = gsap.timeline({ paused: true });
 
 function updatePositions() {
+
+    const isMobile = window.innerWidth < 600;
+
     // Calculate the new position for the first name
-    const firstNameWidth = firstName.offsetWidth * scaleValue;
-    const lastNameWidth = lastName.offsetWidth * scaleValue;
+    const firstNameWidth = firstName.offsetWidth * (isMobile ? 1 : scaleValue);
+    const lastNameWidth = lastName.offsetWidth * (isMobile ? 1 : scaleValue);
 
     const lastNameX = window.innerWidth / 2 - lastNameWidth / 0.80 - firstNameWidth;
     const firstNameX = -window.innerWidth / 2 + firstNameWidth / 0.58 + lastNameWidth;
 
-    // Set up the animation
-    tl = gsap.timeline({ paused: true })
-        .to(firstName, {
-            scale: scaleValue,
-            x: firstNameX,
-            duration: 2,
-            ease: "ease-out"
-        })
-        .to(lastName, {
-            scale: scaleValue,
-            x: lastNameX,
-            duration: 2,
-            ease: "ease-out"
-        }, "-=2"); // Starts at the same time as the previous animation
+    if (isMobile) {
+        // Define mobile-specific animation
+        tl = gsap.timeline({ paused: true })
+            .to(firstName, {
+                x: -window.innerWidth / 2 + 20 , // Example mobile animation
+                yPercent: 35,
+                duration: 2,
+                ease: "ease-out",
+                text: 'J' 
+                
+            })
+            .to(lastName, {
+                x: window.innerWidth / 2 - 20, // Example mobile animation
+                yPercent: -35,
+                duration: 2,
+                ease: "ease-out",
+                text: 'R'
+            }, "-=2");
+    } else {
+        // Desktop animation
+        const lastNameX = window.innerWidth / 2 - lastNameWidth / 0.80 - firstNameWidth;
+        const firstNameX = -window.innerWidth / 2 + firstNameWidth / 0.58 + lastNameWidth;
+
+        tl = gsap.timeline({ paused: true })
+            .to(firstName, {
+                scale: scaleValue,
+                x: firstNameX,
+                duration: 2,
+                ease: "ease-out"
+            })
+            .to(lastName, {
+                scale: scaleValue,
+                x: lastNameX,
+                duration: 2,
+                ease: "ease-out"
+            }, "-=2");
+    }
 }
 
 // Initial animation
@@ -68,6 +98,10 @@ function checkScroll() {
         // Ensure the animation is in the forward state if at the top
         tl.reverse();
         document.querySelector('.video').style.display = 'block';
+
+        if (window.innerWidth < 600) {
+            document.querySelector('.video').style.display = 'none';
+        }
     
     }
 }
@@ -120,7 +154,7 @@ gsap.to('.marquee', {
         document.body.style.overflowX = 'hidden';
         document.getElementsByClassName('marquee')[0].style.display = 'none';
     }
-});
+}); 
 
 // Nav bar active link
 let sections = document.querySelectorAll('section');
@@ -242,5 +276,90 @@ document.addEventListener("DOMContentLoaded", function() {
                 toggleActions: "play none none none",
             }
         });
+    });
+});
+
+// Mobile nav modal
+const burger = document.querySelector('.burger-menu');
+const navModal = document.querySelector('.nav-modal');
+const mobileNavItems = document.querySelectorAll('.mobile-nav-item');
+
+// Handle click event on burger menu
+burger.addEventListener('click', function(event) {
+    event.preventDefault();
+    
+    // Ensure navModal is displayed
+    navModal.style.display = 'block';
+    
+    // Animate the modal into view
+    gsap.to(navModal, { duration: 0.5, y: 0 }); // Adjust 'y' value as needed
+});
+
+// Mobile nav modal
+let isNavOpen = false;
+burger.addEventListener('click', function(event) {
+    event.preventDefault();
+
+    if(isNavOpen) {
+        burger.src = 'assets/burger-menu-svgrepo-com.svg';
+        document.querySelector('.full-name').style.zIndex = 'auto';
+
+        if (tl.reversed()) {
+            tl.play();
+        }
+    
+
+        gsap.to(navModal, {
+            duration: 1, 
+            yPercent: -110 
+            });
+
+        gsap.to(document.querySelector('.mobile-contact-text'), {
+            opacity: 0,
+            duration: 1,
+            delay: 0.5,
+            yPercent: +120
+        })
+
+        isNavOpen = false;
+    } else{
+        burger.src = 'assets/burger-menu-svgrepo-com-copy.svg';
+        document.querySelector('.full-name').style.zIndex = 14;
+        
+        if (!tl.reversed()) {
+            tl.reverse();
+        }
+
+
+        gsap.to(navModal, {
+            duration: 1, 
+            yPercent: 110 
+            });
+
+        gsap.to(document.querySelector('.mobile-contact-text'), {
+            opacity: 1,
+            duration: 1,
+            delay: 1,
+            yPercent: -120
+        })
+
+        isNavOpen = true;
+    }
+
+});
+
+mobileNavItems.forEach(item => {
+    item.addEventListener('click', function() {
+        if (isNavOpen) {
+            burger.src = 'assets/burger-menu-svgrepo-com.svg'; // Original icon
+            gsap.to(navModal, {
+                duration: 1,
+                yPercent: -100, // Animate out
+                onComplete: () => {
+                    navModal.style.display = 'none'; // Hide the modal after animation
+                }
+            });
+            isNavOpen = false;
+        }
     });
 });

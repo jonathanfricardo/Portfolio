@@ -28,7 +28,6 @@ body {
 /* Name */
 
 .full-name {
-    font-size: 9rem;
     text-align: center;
     letter-spacing: -0.06em;
     position: absolute;
@@ -36,10 +35,10 @@ body {
     display: flex;
     width: 100%;
     justify-content: center;
+    font-size: 9rem;
 }
 
 .first-name, .last-name {
-    font-size: 9rem;
     position: fixed;
     mix-blend-mode: difference;
     color: white;
@@ -367,3 +366,234 @@ a {
     object-fit: cover;
 }
 
+.burger-menu {
+    display: none;
+}
+
+.nav-modal {
+    display: none;
+}
+
+.spacer4 {
+    height: 100vh;
+}
+
+/**
+    * Responsive
+    */
+
+@media only screen and (max-width: 600px) {
+
+    .video {
+        display: none;
+    }
+
+    .spacer4 {
+        height: 30vh;
+    }
+
+    /* Nav bar */
+    .nav-bar {
+        display: none;
+    }
+
+    .burger-menu {
+        display: block;
+        position: fixed;
+        width: 15%;
+        top: 0;
+        right: 0;
+        margin: 10px;
+        z-index: 13;
+        font-size: 1.5em;
+        
+        color: black;
+        cursor: pointer;
+        transition: all ease 0.3s;
+    }
+
+    /* Name */
+    .full-name {
+        display: block;
+        height: 20vh;
+        font-size: 4em;
+        position: relative;
+        margin-top: 70%;
+
+    }
+    .first-name {
+        left: 50%;
+        transform: translateX(-50%);
+
+    }
+    .last-name {
+        margin-top: 15%;
+        left: 50%;
+        transform: translateX(-50%);
+    
+    }
+
+    /* Marquee */
+    .marquee {
+        display: none;
+    }
+
+    /* Content */
+    .content {
+        font-size: 1em;
+        width: 100%;
+        display: block;
+        justify-content: center;
+    }
+
+    .words {
+        font-size: 4em;
+        mix-blend-mode: difference;
+        color: white;
+    }
+    
+    .double-words {
+        display: block;
+    }
+
+    #creative {
+        margin-left: 0;
+        text-align: center;
+    }
+    #innovative {
+        margin-left: 0;
+        text-align: center;
+    }
+    #collab {
+        margin-left: 0;
+        text-align: center;
+    }
+    #and {
+        margin-left: 0;
+        text-align: center;
+    }
+    #passionate {
+        margin-left: 0;
+        text-align: center;
+    }
+    
+
+    /* About */
+    .about {
+        font-size: 1.5em;
+    }
+
+    .about-title {
+        font-size: 4em;
+        position: relative;
+        text-align: center;
+    }
+
+    .me-img {
+        width: 100%;
+        margin-bottom: 10%;
+    }
+
+    /* Work */
+    .work-title {
+        position: relative;
+        width: 100%;
+        font-size: 4em;
+        text-align: center;
+    }
+
+    .work-mm {
+        width: 80%;
+        display: block;
+        position: relative;
+        margin: 10%;
+    }
+
+    .work-vragen {
+        width: 80%;
+        display: block;
+        position: relative;
+        margin: 10%;
+    }
+
+    .work-portfolio {
+        width: 80%;
+        display: block;
+        position: relative;
+        margin: 10%;
+    }
+
+    .work {
+        font-size: 1em;
+    }
+
+    /* Footer */
+    .footer-text {
+        font-size: 0.5em;
+    }
+
+    /* Contact */
+    .contact-title {
+        font-size: 4em;
+    }
+
+    .contact-text {
+        font-size: 0.5em;
+    }
+
+    .overlay-first-name {
+        font-size: 1em;
+    }
+
+    .overlay-last-name {
+        font-size: 1em;
+    }
+
+    .nav-modal {
+        width: 100%;
+        height: 100%;
+        background-color: black;
+        position: fixed;
+        top: -110vh;
+        display: block;
+        z-index: 12;
+    }
+
+    .mobile-nav-item {
+        display: block;
+        width: 100%;
+        font-size: 3em;
+        text-align: left;
+    }
+
+    .mobile-contact-text {
+        margin-top: 80vh;
+        display: block;
+        font-weight: 600;
+        color: white;
+        text-align: center;
+        opacity: 0;
+        
+    }
+
+    .mobile-contact-info {
+        margin-bottom: 10%;
+    }
+
+    .mobile-contact-info a:hover {
+        border-bottom: 2px white solid;
+    transition: border 0.2s ease;
+    }
+
+    .footer-text {
+        display: block;
+        text-align: center;
+        font-size: 1em;
+    }
+
+    .footer-info {
+        width: 100%;
+        display: block;
+        margin-bottom: 10%;
+    }
+}
