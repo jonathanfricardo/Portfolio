@@ -52,7 +52,7 @@ function isAtBottom(buffer = 0) {
 
 function checkScroll() {
     // Check if the user has scrolled to the bottom of the page
-    if (isAtBottom(100)) {
+    if (isAtBottom(300)) {
         // Reverse the animation
         tl.reverse();
     } else if(tl.reversed()) {
@@ -219,3 +219,28 @@ contactLink.addEventListener('click', function(event) {
     }
 });
 
+// Word animation
+document.addEventListener("DOMContentLoaded", function() {
+    // Array of word elements and their respective scroll triggers
+    const words = [
+        { id: "#creative", start: "-40% 100%" },
+        { id: "#innovative", start: "-60% 100%" },
+        { id: "#collab", start: "-80% 100%" },
+        { id: "#and", start: "-40% 100%" },
+        { id: "#passionate", start: "-100% 100%" },
+
+    ];
+
+    words.forEach(word => {
+        gsap.to(word.id, {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            scrollTrigger: {
+                trigger: word.id,
+                start: word.start, // Adjust the scroll start point for each word
+                toggleActions: "play none none none",
+            }
+        });
+    });
+});

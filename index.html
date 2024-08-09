@@ -9,6 +9,11 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <!-- Include GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <!-- Include ScrollTrigger Plugin -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+
 </head>
 <body>
 <!-- Nav bar-->
@@ -34,8 +39,8 @@
     <!-- Content -->
     <div class="content" id="">
         <div class="words" id="creative">CREATIVE</div>
-        <div class="words" id="innovative">INNOVATIVE</div>
-        <div class="words double-words" id="collab">PROACTIVE <div class="and"> &</div></div>
+        <div class="words" id="innovative">INNOVATIVE</div> <!-- animate light bulb?-->
+        <div class="double-words"><div class="words" id="collab">PROACTIVE</div> <div class="and words" id="and"> &</div></div>
         <div class="words" id="passionate">PASSIONATE</div>
     </div>
     
@@ -43,7 +48,7 @@
 </section>
 
 <section id="about">
-<div class="about-title">ABOUT ME</div>
+<div class="about-title" id="about-title">ABOUT ME</div>
 
 <div class="about">
 <img src="assets/me.jpg" class="me-img">
@@ -55,7 +60,7 @@
 </section>
 
 <section id="work">
-    <div class="work-title ">WORK</div>
+    <div class="work-title " id="work-title">WORK</div>
 
     <div class="work">
         <div class="work-mm work-card">
