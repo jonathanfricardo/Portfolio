@@ -9,6 +9,13 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <!-- Include GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <!-- Include ScrollTrigger Plugin -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/TextPlugin.min.js"></script>
+
+
 </head>
 <body>
 <!-- Nav bar-->
@@ -18,6 +25,30 @@
     <a class="nav-item " href="#work">WORK</a>
     <a class="nav-item " href="#contact">CONTACT</a>
 </nav>
+
+<!-- Mobile Nav -->
+<img src="assets/burger-menu-svgrepo-com.svg" class="burger-menu">
+<div class="nav-modal">
+    <a class="mobile-nav-item" href="#home">HOME</a>
+    <a class="mobile-nav-item" href="#about">ABOUT</a>
+    <a class="mobile-nav-item" href="#work">WORK</a>
+    <div class="mobile-contact-text">
+        <div class="mobile-contact-info">
+            Work with me: <br>
+            <a href="tel:+31619309538" >+31 6 1939 9538</a>
+
+        </div>
+        <div class="mobile-contact-info">
+            <a href="mailto:jonathan.ricardo@hva.nl">jonathan.ricardo@hva.nl</a><br>
+            <a href="Jonathan Ricardo CV.pdf" target="_blank">Curriculum Vitae</a>
+        </div>
+        <div class="mobile-contact-info">
+            <a href="https://www.linkedin.com/in/jonathan-ricardo-22a370281/" target="_blank">LinkedIn</a><br>
+            <a href="https://github.com/jonathanfricardo" target="_blank">GitHub</a>
+        </div>
+    </div>
+</div>
+    
 
 <section id="home">
     <video autoplay muted loop id="myVideo" class="video">
@@ -34,8 +65,8 @@
     <!-- Content -->
     <div class="content" id="">
         <div class="words" id="creative">CREATIVE</div>
-        <div class="words" id="innovative">INNOVATIVE</div>
-        <div class="words double-words" id="collab">PROACTIVE <div class="and"> &</div></div>
+        <div class="words" id="innovative">INNOVATIVE</div> <!-- animate light bulb?-->
+        <div class="double-words"><div class="words" id="collab">PROACTIVE</div> <div class="and words" id="and"> &</div></div>
         <div class="words" id="passionate">PASSIONATE</div>
     </div>
     
@@ -43,7 +74,7 @@
 </section>
 
 <section id="about">
-<div class="about-title">ABOUT ME</div>
+<div class="about-title" id="about-title">ABOUT ME</div>
 
 <div class="about">
 <img src="assets/me.jpg" class="me-img">
@@ -55,7 +86,7 @@
 </section>
 
 <section id="work">
-    <div class="work-title ">WORK</div>
+    <div class="work-title " id="work-title">WORK</div>
 
     <div class="work">
         <div class="work-mm work-card">
@@ -84,8 +115,32 @@
     <div class="spacer"></div>
 </section>
 
+<div class="overlay">
+    <div class="overlay-first-name">JONATHAN</div>
+    <div class="overlay-last-name">RICARDO</div>
+</div>
+<div class="contact">
+    <div class="contact-title">CONTACT</div>
+    
+    <div class="contact-text">
+        <div class="contact-info">
+            Work with me: <br>
+            <a href="tel:+31619309538" >+31 6 1939 9538</a>
 
-<div class="spacer"></div>
+        </div>
+        <div class="contact-info">
+            <a href="mailto:jonathan.ricardo@hva.nl">jonathan.ricardo@hva.nl</a><br>
+            <a href="Jonathan Ricardo CV.pdf" target="_blank">Curriculum Vitae</a>
+        </div>
+        <div class="contact-info">
+            <a href="https://www.linkedin.com/in/jonathan-ricardo-22a370281/" target="_blank">LinkedIn</a><br>
+            <a href="https://github.com/jonathanfricardo" target="_blank">GitHub</a>
+        </div>
+    </div>
+
+</div>
+
+<div class="spacer4"></div>
 
 <div class="footer">
     <div class="footer-text">
