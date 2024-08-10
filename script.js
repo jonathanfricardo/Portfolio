@@ -35,7 +35,7 @@ function updatePositions() {
         tl = gsap.timeline({ paused: true })
             .to(firstName, {
                 x: -window.innerWidth / 2 + 20 , // Example mobile animation
-                yPercent: 35,
+                y: 30,
                 duration: 2,
                 ease: "ease-out",
                 text: 'J' 
@@ -43,7 +43,7 @@ function updatePositions() {
             })
             .to(lastName, {
                 x: window.innerWidth / 2 - 20, // Example mobile animation
-                yPercent: -35,
+                y: -30,
                 duration: 2,
                 ease: "ease-out",
                 text: 'R'

@@ -424,13 +424,11 @@ a {
     .first-name {
         left: 50%;
         transform: translateX(-50%);
-
     }
     .last-name {
-        margin-top: 15%;
+        margin-top: 60px;
         left: 50%;
         transform: translateX(-50%);
-    
     }
 
     /* Marquee */
