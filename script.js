@@ -94,7 +94,7 @@ function checkScroll() {
     }
 
     // Check if the user has scrolled to the top of the page
-    if (window.scrollY === 0) {
+    if (window.scrollY === 0 && tl.reversed()) {
         // Ensure the animation is in the forward state if at the top
         tl.reverse();
         document.querySelector('.video').style.display = 'block';
