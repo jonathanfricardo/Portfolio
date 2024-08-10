@@ -121,25 +121,6 @@ function checkScroll() {
 // Listen for scroll events
 window.addEventListener('scroll', checkScroll);
 
-
-function updatePositionsAgain() {
-    
-    // Calculate the new position for the first name
-    const firstNameWidth = firstName.offsetWidth * scaleValue;
-    const lastNameWidth = lastName.offsetWidth * scaleValue;
-
-    const lastNameX = window.innerWidth / 2 - lastNameWidth / 0.20 - firstNameWidth;
-
-    gsap.to(lastName, {
-        x: lastNameX,
-        duration: 0,
-        ease: "ease-out"
-    });
-}
-// Adjust the positions on window resize
-window.addEventListener('resize', updatePositionsAgain);
-
-
 // Marquee animation
 const marqueeAnimation = gsap.to('.marquee', {
     x: -window.innerWidth,
@@ -345,7 +326,7 @@ function openNavModal() {
 // Function to close the navigation modal
 function closeNavModal() {
     isNavOpen = false;
-    burger.src = 'assets/burger-menu-svgrepo-com.svg';
+    burger.src = 'assets/burger-menu-svgrepo-com-copy.svg';
     fullName.style.zIndex = 'auto';
     document.body.style.overflow = 'auto';
 

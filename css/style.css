@@ -378,6 +378,23 @@ a {
     height: 100vh;
 }
 
+.skill-title {
+    text-align: center;
+    font-size: 1em;
+    margin-top: 10%;
+}
+.skills {
+    width: 80%;
+    margin-left: 10%;
+    display: flex;
+    justify-content: center;
+}
+
+.skill-badge {
+    width: 100px;
+    margin: 10px;
+}
+
 /**
     * Responsive
     */
@@ -407,7 +424,8 @@ a {
         z-index: 13;
         font-size: 1.5em;
         
-        color: black;
+    
+        mix-blend-mode: difference !important;
         cursor: pointer;
         transition: all ease 0.3s;
     }
