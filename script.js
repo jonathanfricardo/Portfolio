@@ -313,6 +313,7 @@ function openNavModal() {
     isNavOpen = true;
     burger.src = 'assets/burger-menu-svgrepo-com-copy.svg';
     fullName.style.zIndex = 14;
+    document.body.style.overflow = 'hidden';
 
     // Reverse the animation timeline if it is not already reversed
     if (!tl.reversed()) {
@@ -339,6 +340,7 @@ function closeNavModal() {
     isNavOpen = false;
     burger.src = 'assets/burger-menu-svgrepo-com.svg';
     fullName.style.zIndex = 'auto';
+    document.body.style.overflow = 'auto';
 
     // Play the animation timeline if it is reversed
     if (tl.reversed()) {
