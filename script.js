@@ -313,7 +313,6 @@ burger.addEventListener('click', function(event) {
 
 let windowHeight = window.innerHeight;
 
-document.querySelector('.nav-modal').style.height = window.innerHeight + 'px';
 
 // Function to open the navigation modal
 function openNavModal() {
@@ -321,6 +320,7 @@ function openNavModal() {
     burger.src = 'assets/burger-menu-svgrepo-com-copy.svg';
     fullName.style.zIndex = 14;
     document.body.style.overflow = 'hidden';
+    document.querySelector('.nav-modal').style.height = window.innerHeight + 'px';
 
     // Reverse the animation timeline if it is not already reversed
     if (!tl.reversed()) {
