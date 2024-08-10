@@ -1,5 +1,8 @@
 window.onload = function() {
 
+    document.querySelector('.nav-modal').style.height = window.innerHeight + 'px';
+    document.querySelector('.nav-modal').style.top = -window.innerHeight + 'px';
+
     if (window.innerWidth > 600) {
         const firstNamePosition = document.querySelector('.first-name');
         const lastNamePosition = document.querySelector('.last-name');
@@ -308,6 +311,10 @@ burger.addEventListener('click', function(event) {
     }
 });
 
+let windowHeight = window.innerHeight;
+
+document.querySelector('.nav-modal').style.height = window.innerHeight + 'px';
+
 // Function to open the navigation modal
 function openNavModal() {
     isNavOpen = true;
@@ -323,7 +330,7 @@ function openNavModal() {
     // Animate the modal into view from the bottom
     gsap.to(navModal, {
         duration: 1,
-        yPercent: 110
+        y: windowHeight,
     });
 
     // Animate the mobile contact text to appear
@@ -331,7 +338,7 @@ function openNavModal() {
         opacity: 1,
         duration: 1,
         delay: 1,
-        yPercent: -120
+        yPercent: -150
     });
 }
 
@@ -350,7 +357,7 @@ function closeNavModal() {
     // Animate the modal out of view to the top
     gsap.to(navModal, {
         duration: 1,
-        yPercent: -110
+        y: -windowHeight
     });
 
     // Animate the mobile contact text to disappear
@@ -358,7 +365,7 @@ function closeNavModal() {
         opacity: 0,
         duration: 1,
         delay: 0.5,
-        yPercent: +120
+        yPercent: +150
     });
 }
 
