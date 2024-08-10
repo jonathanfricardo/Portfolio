@@ -80,31 +80,39 @@ function isAtBottom(buffer = 0) {
     return scrollTop + windowHeight >= documentHeight - buffer;
 }
 
+let isAtBottomFlag = false; // Track if the user has reached the bottom
+let isAtTopFlag = true;     // Track if the user is at the top
+
 function checkScroll() {
-    // Check if the user has scrolled to the bottom of the page
-    if (isAtBottom(300)) {
-        // Reverse the animation
+    const videoElement = document.querySelector('.video');
+    const isAtBottomOfPage = isAtBottom(300);
+    const isAtTopOfPage = window.scrollY === 0;
+
+    // Reverse the animation when at the bottom of the page
+    if (isAtBottomOfPage && !isAtBottomFlag) {
         tl.reverse();
-    } else if(tl.reversed()) {
-        // Ensure the animation is in the forward state if not at the bottom
-        tl.play();
-    } else {
-        tl.play();
-        document.querySelector('.video').style.display = 'none';
+        isAtBottomFlag = true;   // Set flag indicating user reached the bottom
+        isAtTopFlag = false;     // Unset top flag as we are no longer at the top
     }
 
-    // Check if the user has scrolled to the top of the page
-    if (window.scrollY === 0 && tl.reversed()) {
-        // Ensure the animation is in the forward state if at the top
-        tl.reverse();
-        document.querySelector('.video').style.display = 'block';
-
-        if (window.innerWidth < 600) {
-            document.querySelector('.video').style.display = 'none';
-        }
-    
+    // Play the animation when not at the bottom or top
+    if (!isAtBottomOfPage && !isAtTopOfPage) {
+        tl.play();
+        videoElement.style.display = 'none'; // Hide video while scrolling
+        isAtBottomFlag = false;  // Unset bottom flag as we are no longer at the bottom
+        isAtTopFlag = false;    // Unset top flag as we are no longer at the top
     }
+
+    // Reverse the animation when at the bottom of the page
+    if (isAtTopOfPage && !isAtTopFlag) {
+        tl.reverse();
+        isAtBottomFlag = false;   // Set flag indicating user reached the bottom
+        isAtTopFlag = true;     // Unset top flag as we are no longer at the top
+    }
+   
 }
+
+
 
 
 // Listen for scroll events
@@ -279,87 +287,84 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
-// Mobile nav modal
+// Select elements
 const burger = document.querySelector('.burger-menu');
 const navModal = document.querySelector('.nav-modal');
-const mobileNavItems = document.querySelectorAll('.mobile-nav-item');
+const mobileContactText = document.querySelector('.mobile-contact-text');
+const fullName = document.querySelector('.full-name');
+
+// Track the state of the mobile navigation modal
+let isNavOpen = false;
 
 // Handle click event on burger menu
 burger.addEventListener('click', function(event) {
     event.preventDefault();
-    
-    // Ensure navModal is displayed
-    navModal.style.display = 'block';
-    
-    // Animate the modal into view
-    gsap.to(navModal, { duration: 0.5, y: 0 }); // Adjust 'y' value as needed
+
+    // Toggle the navigation modal state
+    if (isNavOpen) {
+        closeNavModal();
+    } else {
+        openNavModal();
+    }
 });
 
-// Mobile nav modal
-let isNavOpen = false;
-burger.addEventListener('click', function(event) {
-    event.preventDefault();
+// Function to open the navigation modal
+function openNavModal() {
+    isNavOpen = true;
+    burger.src = 'assets/burger-menu-svgrepo-com-copy.svg';
+    fullName.style.zIndex = 14;
 
-    if(isNavOpen) {
-        burger.src = 'assets/burger-menu-svgrepo-com.svg';
-        document.querySelector('.full-name').style.zIndex = 'auto';
-
-        if (tl.reversed()) {
-            tl.play();
-        }
-    
-
-        gsap.to(navModal, {
-            duration: 1, 
-            yPercent: -110 
-            });
-
-        gsap.to(document.querySelector('.mobile-contact-text'), {
-            opacity: 0,
-            duration: 1,
-            delay: 0.5,
-            yPercent: +120
-        })
-
-        isNavOpen = false;
-    } else{
-        burger.src = 'assets/burger-menu-svgrepo-com-copy.svg';
-        document.querySelector('.full-name').style.zIndex = 14;
-        
-        if (!tl.reversed()) {
-            tl.reverse();
-        }
-
-
-        gsap.to(navModal, {
-            duration: 1, 
-            yPercent: 110 
-            });
-
-        gsap.to(document.querySelector('.mobile-contact-text'), {
-            opacity: 1,
-            duration: 1,
-            delay: 1,
-            yPercent: -120
-        })
-
-        isNavOpen = true;
+    // Reverse the animation timeline if it is not already reversed
+    if (!tl.reversed()) {
+        tl.reverse();
     }
 
-});
+    // Animate the modal into view from the bottom
+    gsap.to(navModal, {
+        duration: 1,
+        yPercent: 110
+    });
 
+    // Animate the mobile contact text to appear
+    gsap.to(mobileContactText, {
+        opacity: 1,
+        duration: 1,
+        delay: 1,
+        yPercent: -120
+    });
+}
+
+// Function to close the navigation modal
+function closeNavModal() {
+    isNavOpen = false;
+    burger.src = 'assets/burger-menu-svgrepo-com.svg';
+    fullName.style.zIndex = 'auto';
+
+    // Play the animation timeline if it is reversed
+    if (tl.reversed()) {
+        tl.play();
+    }
+
+    // Animate the modal out of view to the top
+    gsap.to(navModal, {
+        duration: 1,
+        yPercent: -110
+    });
+
+    // Animate the mobile contact text to disappear
+    gsap.to(mobileContactText, {
+        opacity: 0,
+        duration: 1,
+        delay: 0.5,
+        yPercent: +120
+    });
+}
+
+mobileNavItems = document.querySelectorAll('.mobile-nav-item');
 mobileNavItems.forEach(item => {
     item.addEventListener('click', function() {
         if (isNavOpen) {
-            burger.src = 'assets/burger-menu-svgrepo-com.svg'; // Original icon
-            gsap.to(navModal, {
-                duration: 1,
-                yPercent: -100, // Animate out
-                onComplete: () => {
-                    navModal.style.display = 'none'; // Hide the modal after animation
-                }
-            });
-            isNavOpen = false;
+            closeNavModal();
         }
     });
 });
